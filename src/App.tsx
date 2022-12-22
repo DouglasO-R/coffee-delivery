@@ -1,16 +1,36 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { TitleText } from "./components/TitleText";
+import { DefaultLayout } from "./layouts/DefaultLayout";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <DefaultLayout />,
+    children:[
+      {
+        path: "/home",
+        element: <div>OLa HOME</div>
+      },
+      {
+        path: "/checkOut",
+        element: <div>OLa checkOut</div>
+      }
+    ]
+  },
+  
+])
+
 
 function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <TitleText size="m" color="subtitle" weight="400">
-        OLa mundo
-      </TitleText>
+      <RouterProvider router={router} />
+
     </ThemeProvider>
   )
 }
