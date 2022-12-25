@@ -1,27 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {  RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { DefaultLayout } from "./layouts/DefaultLayout";
+import { router } from "./router";
 import { GlobalStyle } from "./styles/global";
 import { defaultTheme } from "./styles/themes/default";
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <DefaultLayout />,
-    children:[
-      {
-        path: "/home",
-        element: <div>OLa HOME</div>
-      },
-      {
-        path: "/checkOut",
-        element: <div>OLa checkOut</div>
-      }
-    ]
-  },
-  
-])
 
 
 function App() {
