@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout";
+import { CheckOutOrder } from "./pages/CheckOutOrder";
 import { Home } from "./pages/Home";
 
 export const router = createBrowserRouter([
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkOut",
-        element: <div>OLa checkOut</ div >
+        element: <CheckOutOrder />
       }
     ]
   },
