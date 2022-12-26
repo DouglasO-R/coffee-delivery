@@ -8,5 +8,6 @@ export const CheckOutOrderContainer = styled.form`
     padding-top: 4.875rem;
 
     display: flex;
+    gap: 2rem;
 
 `

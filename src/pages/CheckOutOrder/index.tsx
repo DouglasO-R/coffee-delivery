@@ -1,4 +1,5 @@
 import { OrderForm } from "./components/OrderForm";
+import { SelectedCoffees } from "./components/SelectedCoffees";
 import { CheckOutOrderContainer } from "./styles";
 
 
@@ -8,7 +9,8 @@ export function CheckOutOrder(){
             <OrderForm />
 
             
-            <div>Cades</div>
+            
+            <SelectedCoffees />
         </CheckOutOrderContainer>
     )
 }
