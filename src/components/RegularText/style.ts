@@ -1,6 +1,10 @@
 import styled from "styled-components";
-import { RegularTextProps } from ".";
 
+interface RegularTextProps {
+  size: "l" | "m" | "s";
+  color: "title" | "subtitle" | "text";
+  weight: string | number;
+}
 
 export const RegularTextStyle = styled.p<RegularTextProps>`
   color: ${({ theme, color }) => theme.colors[`base-${color}`]};

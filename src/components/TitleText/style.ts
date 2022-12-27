@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import { TitleTextProps } from ".";
 
+interface TitleTextProps {
+    size: "xl" | "l" | "m" | "s" | "xs";
+    color: "title" | "subtitle" | "text";
+    weight: string | number;
+}
 
 
 export const TitleStyle = styled.h1<TitleTextProps>`
-    font-size: ${({theme,size}) => theme.textSizes[`title-title-${size}`]};
+    font-size: ${({ theme, size }) => theme.textSizes[`title-title-${size}`]};
     color: ${({ theme, color }) => theme.colors[`base-${color}`]};
     font-weight: ${({ weight }) => weight};
     font-family: ${({ theme }) => theme.fonts.title};
