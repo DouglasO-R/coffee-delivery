@@ -8,7 +8,7 @@ import { RegularText } from "../RegularText";
 export function Header() {
     return (
         <HeaderContainer>
-            <NavLink to="/">
+            <NavLink to="/home">
                 <img src={Logo} alt="" />
             </NavLink>
 

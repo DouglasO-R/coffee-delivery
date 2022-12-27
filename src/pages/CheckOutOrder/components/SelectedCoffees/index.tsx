@@ -4,6 +4,7 @@ import { TitleText } from "../../../../components/TitleText";
 import { ActionContainer, ConfirmButton, CounterContainer, DetailsContainer, Divider, MoneyInfoContainer, RemoveButtonStyle, SelectCoffeeContent, SelectedCoffeeCard, SelectedCoffeesContainer, SelectedCoffeesWrapper } from "./style";
 
 import Coffee from "../../assets/Coffee.png";
+import { NavLink } from "react-router-dom";
 
 export function SelectedCoffees() {
     return (
@@ -88,7 +89,9 @@ export function SelectedCoffees() {
 
                 </MoneyInfoContainer>
 
-                <ConfirmButton>confirmar pedido</ConfirmButton>
+                <NavLink to="/success">
+                    <ConfirmButton>confirmar pedido</ConfirmButton>
+                </NavLink>
             </SelectedCoffeesContainer>
 
 
