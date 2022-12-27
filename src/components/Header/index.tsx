@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { ActionsContainer, CartButton, HeaderContainer, LocationLabel } from "./styles";
-
-import Logo from "../../assets/Logo.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
+
+import { ActionsContainer, CartButton, HeaderContainer, LocationLabel } from "./styles";
 import { RegularText } from "../RegularText";
+import Logo from "../../assets/Logo.svg";
 
 export function Header() {
     return (

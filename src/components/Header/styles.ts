@@ -13,6 +13,8 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
     gap: 52.25rem;
+
+    background-color: ${({theme}) => theme.colors["base-background"]};
 `
 
 export const ActionsContainer = styled.div`
