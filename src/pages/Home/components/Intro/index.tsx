@@ -1,9 +1,10 @@
 import { RegularText } from "../../../../components/RegularText";
 import { TitleText } from "../../../../components/TitleText";
-import { IntroContentContainer, IntroWrapper, ItemContainer, ItemsContainer, TitleContainer } from "./styles";
+import { IntroContentContainer, IntroWrapper,  ItemsContainer, TitleContainer } from "./styles";
 
 import Img from "../../assets/Imagem.png";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
+import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 
 
 export function Intro() {
@@ -17,25 +18,38 @@ export function Intro() {
                     </TitleContainer>
 
                     <ItemsContainer>
-                        <ItemContainer variant="primary">
-                            <span> <ShoppingCart weight="fill" size={16}/> </span>
-                            <RegularText size="m" color="text" weight="400">Compra simples e segura</RegularText>
-                        </ItemContainer>
+                        <InfoWithIcon
+                            icon={<ShoppingCart weight="fill" size={16} />}
+                            variant="primary"
+                            text={
+                                <RegularText size="m" color="text" weight="400">Compra simples e segura</RegularText>
+                            }
+                        />
 
-                        <ItemContainer variant="tertiary">
-                            <span> <Package weight="fill" size={16}/> </span>
-                            <RegularText size="m" color="text" weight="400">Embalagem mantém o café intacto</RegularText>
-                        </ItemContainer>
+                        <InfoWithIcon
+                            icon={<Package weight="fill" size={16} />}
+                            variant="tertiary"
+                            text={
+                                <RegularText size="m" color="text" weight="400">Embalagem mantém o café intacto</RegularText>
+                            }
+                        />
 
-                        <ItemContainer variant="secondary">
-                            <span> <Timer weight="fill" size={16}/> </span>
-                            <RegularText size="m" color="text" weight="400">Entrega rápida e rastreada</RegularText>
-                        </ItemContainer>
+                        <InfoWithIcon
+                            icon={<Timer weight="fill" size={16} />}
+                            variant="secondary"
+                            text={
+                                <RegularText size="m" color="text" weight="400">Entrega rápida e rastreada</RegularText>
+                            }
+                        />
 
-                        <ItemContainer variant="quaternary">
-                            <span> <Coffee weight="fill" size={16}/> </span>
-                            <RegularText size="m" color="text" weight="400">O café chega fresquinho até você</RegularText>
-                        </ItemContainer>
+                        <InfoWithIcon
+                            icon={<Coffee weight="fill" size={16} />}
+                            variant="quaternary"
+                            text={
+                                <RegularText size="m" color="text" weight="400">O café chega fresquinho até você</RegularText>
+                            }
+                        />
+
                     </ItemsContainer>
                 </div>
 
