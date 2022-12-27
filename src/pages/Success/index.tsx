@@ -1,9 +1,10 @@
 import { RegularText } from "../../components/RegularText";
 import { TitleText } from "../../components/TitleText";
-import { OrderInfoContainer, OrderInfoContent, SuccessContainer, SuccessHeader, SuccessWrapper } from "./styles";
+import { OrderInfoContainer, SuccessContainer, SuccessHeader, SuccessWrapper } from "./styles";
 
 import Img from "./assets/Illustration.png";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { InfoWithIcon } from "../../components/InfoWithIcon";
 
 export function Success() {
     return (
@@ -16,31 +17,42 @@ export function Success() {
                 </SuccessHeader>
 
                 <OrderInfoContainer>
-                    <OrderInfoContent variant="primary">
-                        <span><MapPin weight="fill"/></span>
-                        <div>
-                            <p>Entrega em <strong>Rua João Daniel Martinelli, 102</strong></p>
-                            <p>Farrapos - Porto Alegre, RS</p>
-                        </div>
-                    </OrderInfoContent>
 
-                    <OrderInfoContent variant="secondary">
-                        <span><Timer  weight="fill"/></span>
-                        <div>
-                            <p>Previsão de entrega</p>
-                            <p><strong>20 min - 30 min </strong></p>
-                        </div>
-                    </OrderInfoContent>
+                    <InfoWithIcon
+                        icon={<MapPin weight="fill" />}
+                        variant="quaternary"
+                        text={
+                            <RegularText>
+                                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                                <br />
+                                Farrapos - Porto Alegre, RS
+                            </RegularText>
+                        }
+                    />
 
-                    <OrderInfoContent variant="tertiary">
-                        <span>
-                            <CurrencyDollar weight="fill"/>
-                        </span>
-                        <div>
-                            <p>Pagamento na entrega</p>
-                            <p><strong>Cartão de Crédito</strong></p>
-                        </div>
-                    </OrderInfoContent>
+                    <InfoWithIcon
+                        icon={<Timer weight="fill" />}
+                        variant="secondary"
+                        text={
+                            <RegularText>
+                                Previsão de entrega
+                                <br />
+                                <strong>20 min - 30 min </strong>
+                            </RegularText>
+                        }
+                    />
+
+                    <InfoWithIcon
+                        icon={<CurrencyDollar weight="fill" />}
+                        variant="primary"
+                        text={
+                            <RegularText>
+                                Pagamento na entrega
+                                <br />
+                                <strong>Cartão de Crédito</strong>
+                            </RegularText>
+                        }
+                    />
 
                 </OrderInfoContainer>
 

@@ -61,29 +61,3 @@ enum VariantColor{
     secondary = "yellow",
     tertiary = "yellow-dark"
 }
-
-interface InfoProps {
-    variant:Variants
-}
-
-export const OrderInfoContent = styled.div<InfoProps>`
-    display: flex;
-    align-items: center;
-
-    gap: 0.75rem;
-
-    > span {
-        height: 2rem;
-        width: 2rem;
-        background-color: ${({theme,variant}) => theme.colors[`brand-${VariantColor[variant]}`]};
-        padding: 0.5rem;
-        gap: 0.5rem;
-        border-radius: 100px;
-
-        > svg {
-            color:${({theme}) => theme.colors["base-background"]} ;
-        }
-    }
-`
-
-
