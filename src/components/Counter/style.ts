@@ -16,8 +16,11 @@ export const CounterContainer = styled.div`
 
 `
 
-export const IconContainer = styled.span`
+export const IconContainer = styled.button`
+    border: none;
+    background-color: transparent;
     cursor: pointer;
+
 
     > svg {
         color: ${({theme}) => theme.colors["brand-purple"]};
