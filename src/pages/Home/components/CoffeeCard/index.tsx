@@ -3,25 +3,40 @@ import { RegularText } from "../../../../components/RegularText";
 import { TitleText } from "../../../../components/TitleText";
 import { ActionsContainer, CartButtonContainer, CoffeeCardWrapper, CoffeeFooterContainer, CounterContainer, TagsContainer } from "./style";
 
-export function CoffeeCard() {
+
+interface Coffee{
+    id: number;
+    tags: string[];
+    name: string;
+    description: string;
+    photo: string;
+    price: number;
+}
+
+interface CoffeeProps {
+    coffee: Coffee;
+  }
+
+export function CoffeeCard({coffee}:CoffeeProps) {
+    const {description,id,name,photo,price,tags} = coffee;
     return (
         <CoffeeCardWrapper>
-            <img src="" alt="" />
+            <img src={photo} alt="" />
 
             <TagsContainer>
-                <span>especial</span>
-                <span>alcoólico</span>
-                <span>gelado</span>
+                {tags?.map((tag)=> (
+                    <span key={`${id}${tag}`}>{tag}</span>
+                ))}
 
             </TagsContainer>
 
-            <TitleText size="s" weight={700} color="subtitle">Expresso Tradicional</TitleText>
-            <RegularText size="s" weight={400} color="subtitle">O tradicional café feito com água quente e grãos moídos</RegularText>
+            <TitleText size="s" weight={700} color="subtitle">{name}</TitleText>
+            <RegularText size="s" weight={400} color="subtitle">{description}</RegularText>
 
             <CoffeeFooterContainer>
                 <div>
                     <RegularText size="s" weight={400} color="text">R$</RegularText>
-                    <TitleText size="m" weight={800} color="text">9,90</TitleText>
+                    <TitleText size="m" weight={800} color="text">{price.toLocaleString("pt-BR",{minimumFractionDigits:2})}</TitleText>
                 </div>
 
                 <ActionsContainer>
