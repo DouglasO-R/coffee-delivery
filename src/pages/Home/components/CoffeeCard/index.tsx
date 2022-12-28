@@ -1,7 +1,8 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
+import { Counter } from "../../../../components/Counter";
 import { RegularText } from "../../../../components/RegularText";
 import { TitleText } from "../../../../components/TitleText";
-import { ActionsContainer, CartButtonContainer, CoffeeCardWrapper, CoffeeFooterContainer, CounterContainer, TagsContainer } from "./style";
+import { ActionsContainer, CartButtonContainer, CoffeeCardWrapper, CoffeeFooterContainer, PriceContent, TagContent, TagsContainer } from "./style";
 
 
 interface Coffee{
@@ -25,7 +26,7 @@ export function CoffeeCard({coffee}:CoffeeProps) {
 
             <TagsContainer>
                 {tags?.map((tag)=> (
-                    <span key={`${id}${tag}`}>{tag}</span>
+                    <TagContent key={`${id}${tag}`}>{tag}</TagContent>
                 ))}
 
             </TagsContainer>
@@ -34,22 +35,20 @@ export function CoffeeCard({coffee}:CoffeeProps) {
             <RegularText size="s" weight={400} color="subtitle">{description}</RegularText>
 
             <CoffeeFooterContainer>
-                <div>
+                <PriceContent>
                     <RegularText size="s" weight={400} color="text">R$</RegularText>
                     <TitleText size="m" weight={800} color="text">{price.toLocaleString("pt-BR",{minimumFractionDigits:2})}</TitleText>
-                </div>
+                </PriceContent>
 
                 <ActionsContainer>
-                    <CounterContainer>
-                        <button><Minus size={14} weight="bold"/></button>
-                        <span>10</span>
-                        <button><Plus size={14} weight="bold"/></button>
-                    </CounterContainer>
+                    <Counter />
 
                     <CartButtonContainer>
                         <ShoppingCart size={22} weight="fill"/>
                     </CartButtonContainer>
+
                 </ActionsContainer>
+                
             </CoffeeFooterContainer>
         </CoffeeCardWrapper>
     )

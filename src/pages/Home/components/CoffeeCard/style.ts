@@ -35,8 +35,9 @@ export const TagsContainer = styled.div`
     flex-wrap: wrap;
     gap: 0.25rem;
     margin-bottom: 1rem;
+`
 
-    > span {
+export const TagContent = styled.span`
         display: flex;
         align-items: center;
         justify-content: center;
@@ -48,9 +49,7 @@ export const TagsContainer = styled.div`
         color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
         font-size: ${({ theme }) => theme.textSizes["components-tag"]};
         font-weight: 700;
-    }
-
-`
+    `
 
 export const CoffeeFooterContainer = styled.div`
     width: 100%;
@@ -59,14 +58,13 @@ export const CoffeeFooterContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+`
 
-    > div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.25rem;
-    }
-
+export const PriceContent = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
 `
 
 export const ActionsContainer = styled.div`
@@ -76,36 +74,11 @@ export const ActionsContainer = styled.div`
     gap:0.5rem ;
 `
 
-export const CounterContainer = styled.div`
-    height: 2.375rem;
-    width: 100%;
-    padding: 0.5rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 0.25rem;
-    border-radius: 6px;
-
-    background-color: ${({theme}) => theme.colors["base-button"]};
-
-    > button{
-        border: none;
-        cursor: pointer;
-        background-color: transparent;
-
-        > svg {
-            color: ${({theme}) => theme.colors["brand-purple"]};
-        }
-    }
-`
-
 export const CartButtonContainer = styled.button`
     border: none;
     cursor: pointer;
-    background-color: ${({theme}) => theme.colors["brand-purple-dark"]};
-    color: ${({theme}) => theme.colors["base-background"]};
+    background-color: ${({ theme }) => theme.colors["brand-purple-dark"]};
+    color: ${({ theme }) => theme.colors["base-background"]};
 
     height:2.375rem ;
     width:2.375rem ;
