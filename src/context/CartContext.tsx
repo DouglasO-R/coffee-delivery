@@ -36,10 +36,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     const addCoffeeToCart = (coffee: CartItem) => {
         const coffeeAlreadyExistInCart = cartItems.find((cartItem) => cartItem.id === coffee.id);
+
         if (coffeeAlreadyExistInCart) {
-            const newCart = cartItems.map((cartItem) => cartItem.id === coffee.id ? { ...cartItem, quantity: cartItem.quantity + coffee.quantity } : cartItem);
-            setCartItems(() => newCart);
+            const newCart = cartItems.map((item) => item.id === coffee.id ? {...item,quantity:item.quantity += coffee.quantity} : item);
+            setCartItems(newCart);
+        }else{
+            setCartItems(prev => [...prev,{...coffee,quantity:coffee.quantity}]);
         }
+
     }
 
     const changeCartItemQuantity = (cartItemId: number, type: "increase" | "decrease") => {
@@ -63,9 +67,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
 
 
-    useEffect(() => {
-        localStorage.setItem(COFFEE_CART_STORAGE, JSON.stringify(cartItems));
-    }, [cartItems]);
+    // useEffect(() => {
+    //     localStorage.setItem(COFFEE_CART_STORAGE, JSON.stringify(cartItems));
+    // }, [cartItems]);
 
     return (
         <CartContext.Provider

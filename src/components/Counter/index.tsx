@@ -10,13 +10,13 @@ interface CounterProps {
 export function Counter({ onDecrease, onIncrease, quantity }: CounterProps) {
     return (
         <CounterContainer>
-            <IconContainer onClick={onDecrease} disabled={quantity <= 1}>
+            <IconContainer type="button" onClick={onDecrease} disabled={quantity <= 1}>
                 <Minus size={14} weight="bold" />
             </IconContainer>
 
             <span>{quantity}</span>
 
-            <IconContainer onClick={onIncrease}>
+            <IconContainer type="button" onClick={onIncrease}>
                 <Plus size={14} weight="bold" />
             </IconContainer>
         </CounterContainer>

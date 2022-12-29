@@ -1,81 +1,39 @@
-import { Minus, Plus, Trash } from "phosphor-react";
 import { RegularText } from "../../../../components/RegularText";
 import { TitleText } from "../../../../components/TitleText";
-import { ActionContainer, ConfirmButton, CounterContainer, DetailsContainer, Divider, MoneyInfoContainer, RemoveButtonStyle, SelectCoffeeContent, SelectedCoffeeCard, SelectedCoffeesContainer, SelectedCoffeesWrapper } from "./style";
+import { ConfirmButton,  Divider,  MoneyInfoContainer, SelectedCoffeesContainer, SelectedCoffeesWrapper } from "./style";
 
-import Coffee from "../../assets/Coffee.png";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../../../../hooks/useCart";
+import { SelectedCoffeeCard } from "../SelectedCoffeeCard";
+import React from "react";
 
 export function SelectedCoffees() {
+    const { cartItems, cartItemsTotal, } = useCart();
+    const entrega = 9.90;
+    const total = entrega + cartItemsTotal;
+    const formatedTotal = total.toLocaleString("pt-BR", { minimumFractionDigits: 2 });
+
+
+
+
     return (
         <SelectedCoffeesWrapper>
             <TitleText size="xs" weight={700} color="subtitle">Cafés selecionados</TitleText>
 
             <SelectedCoffeesContainer>
-
-                <SelectedCoffeeCard>
-                    <SelectCoffeeContent>
-                        <img src={Coffee} alt="" />
-
-                        <DetailsContainer>
-                            <RegularText size="m" weight={400} color="subtitle">Expresso Tradicional</RegularText>
-
-                            <ActionContainer>
-                                <CounterContainer>
-                                    <button><Minus /></button>
-                                    <span>1</span>
-                                    <button><Plus /></button>
-                                </CounterContainer>
-
-                                <RemoveButtonStyle>
-                                    <Trash />
-                                    Remover
-                                </RemoveButtonStyle>
-
-                            </ActionContainer>
-                        </DetailsContainer>
-
-                    </SelectCoffeeContent>
-
-                    <p>R$9,90</p>
-                </SelectedCoffeeCard>
-
-                <Divider />
-
-                <SelectedCoffeeCard>
-                    <SelectCoffeeContent>
-                        <img src={Coffee} alt="" />
-
-                        <DetailsContainer>
-                            <RegularText size="m" weight={400} color="subtitle">Expresso Tradicional</RegularText>
-
-                            <ActionContainer>
-                                <CounterContainer>
-                                    <button><Minus /></button>
-                                    <span>1</span>
-                                    <button><Plus /></button>
-                                </CounterContainer>
-
-                                <RemoveButtonStyle>
-                                    <Trash />
-                                    Remover
-                                </RemoveButtonStyle>
-
-                            </ActionContainer>
-                        </DetailsContainer>
-
-                    </SelectCoffeeContent>
-
-                    <p>R$9,90</p>
-                </SelectedCoffeeCard>
-
-                <Divider />
+                {cartItems.map((item) => (
+                    <React.Fragment key={item.id} >
+                         <SelectedCoffeeCard coffee={item} />
+                         <Divider />
+                    </React.Fragment>
+                   
+                ))}
 
 
                 <MoneyInfoContainer>
                     <div>
                         <RegularText size="s" weight={400} color="text">Total de itens</RegularText>
-                        <RegularText size="s" weight={400} color="text">R$29,99</RegularText>
+                        <RegularText size="s" weight={400} color="text">R${cartItemsTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</RegularText>
 
                     </div>
                     <div>
@@ -84,7 +42,7 @@ export function SelectedCoffees() {
                     </div>
                     <div>
                         <RegularText size="l" weight={700} color="text">Total</RegularText>
-                        <RegularText size="l" weight={700} color="text">R$99,99</RegularText>
+                        <RegularText size="l" weight={700} color="text">R${formatedTotal}</RegularText>
                     </div>
 
                 </MoneyInfoContainer>

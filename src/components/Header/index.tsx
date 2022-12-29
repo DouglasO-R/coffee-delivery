@@ -4,14 +4,16 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 import { ActionsContainer, CartButton, HeaderContainer, LocationLabel } from "./styles";
 import { RegularText } from "../RegularText";
 import Logo from "../../assets/Logo.svg";
+import { useCart } from "../../hooks/useCart";
 
 export function Header() {
+    const {cartQuantity} = useCart();
+    
     return (
         <HeaderContainer>
             <NavLink to="/home">
                 <img src={Logo} alt="" />
             </NavLink>
-
             <ActionsContainer>
                 <LocationLabel>
                     <MapPin weight="fill" />
@@ -23,7 +25,7 @@ export function Header() {
                 <NavLink to="/checkOut">
                     <CartButton>
                         <ShoppingCart size={22} weight="fill"/>
-                        <span>3</span>
+                        {cartQuantity >= 1 && <span>{cartQuantity}</span>}
                     </CartButton>
                 </NavLink>
             </ActionsContainer>

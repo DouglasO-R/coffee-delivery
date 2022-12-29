@@ -103,11 +103,7 @@ export const CounterContainer = styled.div`
     }
 `
 
-export const Divider = styled.div`
-    width: 100%;
-    border-bottom: 1px solid ${({ theme }) => theme.colors["base-button"]};
-    margin: 1.5rem 0;
-`
+
 
 
 export const MoneyInfoContainer = styled.div`
@@ -143,4 +139,10 @@ export const ConfirmButton = styled.button`
     font-weight: 700;
     text-transform: uppercase;
 
+`
+
+export const Divider = styled.div`
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.colors["base-button"]};
+    margin: 1.5rem 0;
 `
