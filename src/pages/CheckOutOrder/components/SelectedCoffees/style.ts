@@ -4,19 +4,25 @@ export const SelectedCoffeesWrapper = styled.section`
     width: 28rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    
-
+    gap: 0.5rem;   
 `
-
 export const SelectedCoffeesContainer = styled.div`
     width: 100%;
     padding: 2.5rem;
     gap: 1.5rem;
     background-color: ${({ theme }) => theme.colors["base-card"]};
     border-radius: 6px 44px;
+    
 `
 
+export const SelectedCoffeeListContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    overflow:auto;
+    padding: 0 0.5rem;
+
+`
 export const SelectedCoffeeCard = styled.div`
     width: 100%;
     height: 5rem;
@@ -40,7 +46,6 @@ export const SelectCoffeeContent = styled.div`
         width: 4rem;
     }
 `
-
 export const DetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -52,7 +57,6 @@ export const ActionContainer = styled.div`
     gap: 0.5rem;
 
 `
-
 export const RemoveButtonStyle = styled.button`
 
     border: none;
@@ -64,20 +68,19 @@ export const RemoveButtonStyle = styled.button`
     background-color: ${({ theme }) => theme.colors["base-button"]};
     border-radius: 6px;
 
-    font-size: ${({theme}) => theme.textSizes["components-button-s"]};
+    font-size: ${({ theme }) => theme.textSizes["components-button-s"]};
     font-weight: 400;
-    color: ${({theme}) => theme.colors["base-text"]};
+    color: ${({ theme }) => theme.colors["base-text"]};
     text-transform: uppercase;
 
     > svg {
-        color: ${({theme}) => theme.colors["brand-purple"]};
+        color: ${({ theme }) => theme.colors["brand-purple"]};
     }
 
     &:hover{
-        background-color: ${({theme}) => theme.colors["base-hover"]};
+        background-color: ${({ theme }) => theme.colors["base-hover"]};
     }
 `
-
 export const CounterContainer = styled.div`
     height: 2rem;
     width: 100%;
@@ -102,10 +105,6 @@ export const CounterContainer = styled.div`
         }
     }
 `
-
-
-
-
 export const MoneyInfoContainer = styled.div`
     width: 100%;
     display: flex;
@@ -122,7 +121,6 @@ export const MoneyInfoContainer = styled.div`
 
 
 `
-
 export const ConfirmButton = styled.button`
     width: 100%;
     height:2.875rem;
@@ -140,7 +138,6 @@ export const ConfirmButton = styled.button`
     text-transform: uppercase;
 
 `
-
 export const Divider = styled.div`
     width: 100%;
     border-bottom: 1px solid ${({ theme }) => theme.colors["base-button"]};

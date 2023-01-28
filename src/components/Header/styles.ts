@@ -12,19 +12,15 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 52.25rem;
 
-    background-color: ${({theme}) => theme.colors["base-background"]};
+    background-color: ${({ theme }) => theme.colors["base-background"]};
 `
-
 export const ActionsContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 0.75rem;
     height: 2.375rem;
 `
-
-
 export const LocationLabel = styled.div`
     border-radius: 6px;
     padding: 0.5rem;
@@ -42,7 +38,6 @@ export const LocationLabel = styled.div`
         color: ${({ theme }) => theme.colors["brand-purple"]};
     }
 `
-
 export const CartButton = styled.button`
     border: none;
     cursor: pointer;
@@ -80,4 +75,23 @@ export const CartButton = styled.button`
         background-color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
 
   }
+`
+export const ThemeButton = styled.button`
+    border: none;
+    cursor: pointer;
+
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 6px;
+    padding: 0.5rem;
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 0.25rem;
+
+    background-color: ${({ theme }) => theme.colors["brand-yellow-light"]};
+    color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
 `

@@ -11,6 +11,7 @@ interface CartContextType {
         type: "increase" | "decrease"
     ) => void;
     removeCartItem: (cartItemId: number) => void;
+    cleanCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -28,7 +29,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         return storedCartItems ? JSON.parse(storedCartItems) : [];
     });
 
-
     const cartQuantity = cartItems.length;
     const cartItemsTotal = cartItems.reduce((acc, item) => {
         return acc + (item.price * item.quantity);
@@ -38,10 +38,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         const coffeeAlreadyExistInCart = cartItems.find((cartItem) => cartItem.id === coffee.id);
 
         if (coffeeAlreadyExistInCart) {
-            const newCart = cartItems.map((item) => item.id === coffee.id ? {...item,quantity:item.quantity += coffee.quantity} : item);
+            const newCart = cartItems.map((item) => item.id === coffee.id ? { ...item, quantity: item.quantity += coffee.quantity } : item);
             setCartItems(newCart);
-        }else{
-            setCartItems(prev => [...prev,{...coffee,quantity:coffee.quantity}]);
+        } else {
+            setCartItems(prev => [...prev, { ...coffee, quantity: coffee.quantity }]);
         }
 
     }
@@ -66,6 +66,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         setCartItems(() => newCart);
     }
 
+    const cleanCart = () => {
+        setCartItems([]);
+    }
+
 
     // useEffect(() => {
     //     localStorage.setItem(COFFEE_CART_STORAGE, JSON.stringify(cartItems));
@@ -79,7 +83,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
                 cartItemsTotal,
                 addCoffeeToCart,
                 changeCartItemQuantity,
-                removeCartItem
+                removeCartItem,
+                cleanCart
             }}
         >
             {children}

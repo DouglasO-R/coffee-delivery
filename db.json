@@ -112,5 +112,27 @@
       "photo": "http://localhost:5173/assets/coffees/irlandes.png",
       "price": 9.9
     }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "tradicional"
+    },
+    {
+      "id": 2,
+      "name": "gelado"
+    },
+    {
+      "id": 3,
+      "name": "com leite"
+    },
+    {
+      "id": 4,
+      "name": "especial"
+    },
+    {
+      "id": 5,
+      "name": "alcoólico"
+    }
   ]
 }

@@ -28,20 +28,26 @@ export const FilterContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+`
+interface TagStyleProps {
+    selected: boolean;
+}
 
-    > span{
-        padding: 0.375rem 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+export const TagStyle = styled.button<TagStyleProps>`
+    border: none;
+    background-color: ${({ selected, theme }) => selected ? theme.colors["brand-yellow-light"] : 'transparent'};
+    padding: 0.375rem 0.75rem;
 
-        border: solid ${({theme}) => theme.colors["brand-yellow"]} 1px;
-        border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        color: ${({theme}) => theme.colors["brand-yellow-dark"]};
-        font-weight: 700;
-        font-size: ${({theme}) => theme.textSizes["components-tag"]};
-    }
+    border: solid ${({ theme }) => theme.colors["brand-yellow"]} 1px;
+    border-radius: 100px;
+
+    color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
+    font-weight: 700;
+    font-size: ${({ theme }) => theme.textSizes["components-tag"]};
 `
 export const ListContainer = styled.div`
     display: flex;

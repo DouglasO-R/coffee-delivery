@@ -12,7 +12,7 @@ export const CounterContainer = styled.div`
     gap: 0.25rem;
     border-radius: 6px;
 
-    background-color: ${({theme}) => theme.colors["base-button"]};
+    background-color: ${({ theme }) => theme.colors["base-button"]};
 
 `
 
@@ -23,10 +23,10 @@ export const IconContainer = styled.button`
 
 
     > svg {
-        color: ${({theme}) => theme.colors["brand-purple"]};
+        color: ${({ theme }) => theme.colors["brand-purple"]};
 
         &:hover{
-            color: ${({theme}) => theme.colors["brand-purple-dark"]};
+            color: ${({ theme }) => theme.colors["brand-purple-dark"]};
         }
     }
 `

@@ -5,8 +5,25 @@ import { OrderInfoContainer, SuccessContainer, SuccessHeader, SuccessWrapper } f
 import Img from "./assets/Illustration.png";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { InfoWithIcon } from "../../components/InfoWithIcon";
+import { useLocation } from "react-router-dom";
+import { FormData } from "../CheckOutOrder";
+
+
+interface LocationType {
+    state: FormData;
+}
+
+enum PagamentType {
+    credit = "Credito",
+    debit = "Debito",
+    money = "Dinheiro"
+}
+
 
 export function Success() {
+
+    const { state } = useLocation() as unknown as LocationType;
+
     return (
         <SuccessWrapper>
             <SuccessContainer>
@@ -23,9 +40,9 @@ export function Success() {
                         variant="quaternary"
                         text={
                             <RegularText>
-                                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                                Entrega em <strong>{state.street}</strong>
                                 <br />
-                                Farrapos - Porto Alegre, RS
+                                {state.district} - {state.city}, {state.state}
                             </RegularText>
                         }
                     />
@@ -49,7 +66,7 @@ export function Success() {
                             <RegularText>
                                 Pagamento na entrega
                                 <br />
-                                <strong>Cartão de Crédito</strong>
+                                <strong>{PagamentType[state.paymentMethod]}</strong>
                             </RegularText>
                         }
                     />

@@ -1,20 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const OrderFomWrapper = styled.section`
     width: 40rem;
-    height: 36.9375rem;
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    
     gap:0.75rem ;
 
 `
-
 export const AddressContainer = styled.div`
     width: 100%;
-    height:23.25rem;
+    min-height:23.25rem;
     padding: 2.5rem;
 
     display: flex;
@@ -24,7 +21,6 @@ export const AddressContainer = styled.div`
     background-color: ${({ theme }) => theme.colors["base-card"]};
     border-radius: 6px;
 `
-
 export const OrderFormHeaderContainer = styled.header`
     width: 100%;
 
@@ -36,12 +32,13 @@ export const OrderFormHeaderContainer = styled.header`
         color: ${({ theme }) => theme.colors["brand-yellow-dark"]};
     }
 `
-
 export const FormInputContainer = styled.div`
     display: grid;
     grid-template-columns:12.5rem 17.25rem 3.75rem;
     column-gap: 0.75rem;
     row-gap: 1rem;
+    grid-auto-flow: dense;
+
 
     .cep {
         grid-column: span 3;
@@ -56,49 +53,47 @@ export const FormInputContainer = styled.div`
         grid-column: span 2;
     }
 
-    > div {
-        width: 100%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        > input{
-            width: 100%;
-        }
-        > p{
-            position: absolute;
-            right: 5px;
-            margin-right: 0.5rem;
-
-            font-style: italic;
-            font-size: 0.75rem;
-            color: ${({ theme }) => theme.colors["base-label"]};
-        }
-    }
 `
 
-export const Input = styled.input`
-    height: 2.625rem;
-    border-radius: 4px;
-    padding: 0.75rem;
-
+export const InputWrapper = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.3rem;
 
-    border: 1px solid ${({ theme }) => theme.colors["base-button"]};
-    background-color: ${({ theme }) => theme.colors["base-input"]};
-    color: ${({ theme }) => theme.colors["base-text"]};
-    font-size: 0.875rem;
-
-    &::placeholder {
-        color: ${({ theme }) => theme.colors["base-label"]};
-        font-size: 0.875rem;
+    > span {
+        color: ${({ theme }) => theme.colors["base-error"]};
     }
-
 `
+export const InputStyleContainer = styled.div`
+    width: 100%;
+    position: relative;
+    > p {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: ${({ theme }) => theme.colors["base-label"]};
+        font-size: ${({ theme }) => theme.textSizes["text-regular-s"]};
+        font-style: italic;
+    }
+`
+interface InputStyleProps {
+    hasError: boolean
+}
 
+export const InputStyle = styled.input<InputStyleProps>`
+    width: 100%;
+    height: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    gap: 0.25rem;
+    background-color: ${({ theme }) => theme.colors["base-input"]};
+    border: 1px solid ${({ theme }) => theme.colors["base-button"]};
+
+    ${({ theme, hasError }) => hasError && css`
+        border-color:${theme.colors["base-error"]};
+    `}
+    color:${({ theme }) => theme.colors["base-text"]}
+`
 export const PaymentContainer = styled.div` 
     width: 100%;
     height:12.9375rem;
@@ -107,9 +102,12 @@ export const PaymentContainer = styled.div`
     gap: 2rem;
     background-color: ${({ theme }) => theme.colors["base-card"]};
 
+    > p {
+        color: ${({ theme }) => theme.colors["base-error"]};
+        margin-top: 0.3rem;
+    }
 
 `
-
 export const PaymentContainerHeader = styled.header`
     width: 100%;
     display: flex;
@@ -131,7 +129,6 @@ export const PaymentMethodOptionsContainer = styled.div`
     display: flex;
     gap:0.75rem ;
 `
-
 export const PaymentMethodContainer = styled.div`
     
 
@@ -164,7 +161,7 @@ export const PaymentMethodContainer = styled.div`
         }
 
         &:hover{
-            background-color: ${({theme}) => theme.colors["base-hover"]};
+            background-color: ${({ theme }) => theme.colors["base-hover"]};
         }
 
     }

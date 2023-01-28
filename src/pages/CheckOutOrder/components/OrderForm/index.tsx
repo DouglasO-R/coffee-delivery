@@ -1,15 +1,124 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { useFormContext } from "react-hook-form";
+
+
+import { FormData } from "../..";
 import { RegularText } from "../../../../components/RegularText";
 import { TitleText } from "../../../../components/TitleText";
-import { AddressContainer, FormInputContainer, Input, OrderFomWrapper, OrderFormHeaderContainer, PaymentContainer, PaymentContainerHeader, PaymentMethodContainer, PaymentMethodOptionsContainer } from "./style";
+import { AddressContainer, FormInputContainer, InputStyle, InputStyleContainer, InputWrapper, OrderFomWrapper, OrderFormHeaderContainer, PaymentContainer, PaymentContainerHeader, PaymentMethodContainer, PaymentMethodOptionsContainer } from "./style";
+
+
+interface ErrorsType {
+    errors: {
+        [key: string]: {
+            message: string;
+        };
+    };
+}
+
+const PaymentOptions = [
+    {
+        value: "credit",
+        icon: <CreditCard size={16} />,
+        text: "cartão de crédito"
+    },
+    {
+        value: "debit",
+        icon: <Bank size={16} />,
+        text: "cartão de débito"
+    },
+    {
+        value: "money",
+        icon: <Money size={16} />,
+        text: "dinheiro"
+    },
+];
+
+type PaymentOptionType = typeof PaymentOptions[0];
+
+interface FieldInput {
+    name: "number" | "cep" | "street" | "complement" | "district" | "city" | "state",
+    type: string,
+    placeholder: string
+}
+
+const FieldList: FieldInput[] = [
+    {
+        name: "cep",
+        type: "number",
+        placeholder: "CEP"
+    },
+    {
+        name: "street",
+        type: "string",
+        placeholder: "Rua"
+    },
+    {
+        name: "number",
+        type: "number",
+        placeholder: "Numero"
+    },
+    {
+        name: "complement",
+        type: "string",
+        placeholder: "Complemento"
+    },
+    {
+        name: "district",
+        type: "string",
+        placeholder: "Bairro"
+    },
+    {
+        name: "city",
+        type: "string",
+        placeholder: "Cidade"
+    },
+    {
+        name: "state",
+        type: "string",
+        placeholder: "UF"
+    },
+
+]
+
 
 
 export function OrderForm() {
+    const { register, formState, watch } = useFormContext<FormData>();
+    const { errors } = formState as ErrorsType;
+
+    const renderPaymentOptions = (options: PaymentOptionType, index: number) => (
+        <PaymentMethodContainer key={index}>
+            <input {...register("paymentMethod")} type="radio" name="paymentMethod" id={options.value} value={options.value} />
+            <label htmlFor={options.value}>
+                {options.icon}
+                <p>{options.text}</p>
+            </label>
+        </PaymentMethodContainer>
+    )
+
+    const optionalIsFilled = watch('complement');
+    const renderInputs = (input: FieldInput, index: number) => (
+        <InputWrapper className={input.name} key={index}>
+            <InputStyleContainer>
+                <InputStyle
+                    hasError={!!errors[input.name]}
+                    placeholder={input.placeholder}
+                    type={input.type}
+                    {...register(input.name)}
+                />
+                {(input.name === 'complement' && !optionalIsFilled) && <p>Opcional</p>}
+            </InputStyleContainer>
+            {errors[input.name] && <span>{errors[input.name]?.message}</span>}
+        </InputWrapper>
+    )
+
     return (
         <OrderFomWrapper>
-            
+
             <TitleText size="xs" weight={700} color="subtitle">Complete seu pedido</TitleText>
             <AddressContainer>
+
                 <OrderFormHeaderContainer>
                     <MapPinLine size={22} />
                     <div>
@@ -19,20 +128,13 @@ export function OrderForm() {
                 </OrderFormHeaderContainer>
 
                 <FormInputContainer>
-                    <Input type="number" placeholder="CEP" className="cep"/>
-                    <Input type="text" placeholder="Rua" className="street"/>
-                    <Input type="number" placeholder="Numero" />
-                    <div className="complement">
-                        <Input type="text" placeholder="Complemento" />
-                        <p>Opcional</p>
-                    </div>
-                    <Input type="text" placeholder="Bairro" />
-                    <Input type="text" placeholder="Cidade" />
-                    <Input type="text" placeholder="UF" />
+                    {FieldList.map(renderInputs)}
                 </FormInputContainer>
+
             </AddressContainer>
 
             <PaymentContainer>
+
                 <PaymentContainerHeader>
                     <CurrencyDollar size={22} />
                     <div>
@@ -42,30 +144,11 @@ export function OrderForm() {
                 </PaymentContainerHeader>
 
                 <PaymentMethodOptionsContainer>
-                    <PaymentMethodContainer>
-                        <input type="radio" name="paymentMethod" id="creditCard"/>
-                        <label htmlFor="creditCard">
-                            <CreditCard size={16}/>
-                            <p>cartão de credito</p>
-                        </label>
-                    </PaymentMethodContainer>
-                    
-                    <PaymentMethodContainer>
-                        <input type="radio" name="paymentMethod" id="bank"/>
-                        <label htmlFor="bank">
-                            <Bank size={16}/>
-                            <p>cartão de credito</p>
-                        </label>
-                    </PaymentMethodContainer>
 
-                    <PaymentMethodContainer>
-                        <input type="radio" name="paymentMethod" id="money"/>
-                        <label htmlFor="money">
-                            <Money size={16}/>
-                            <p>cartão de credito</p>
-                        </label>
-                    </PaymentMethodContainer>
+                    {PaymentOptions.map(renderPaymentOptions)}
+
                 </PaymentMethodOptionsContainer>
+                {errors.paymentMethod?.message && <p>{errors.paymentMethod?.message}</p>}
 
             </PaymentContainer>
 

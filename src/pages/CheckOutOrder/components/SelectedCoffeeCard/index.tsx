@@ -3,7 +3,6 @@ import { Counter } from "../../../../components/Counter";
 import { RegularText } from "../../../../components/RegularText";
 import { useCart } from "../../../../hooks/useCart";
 import { CartItem } from "../../../../type/CartItem";
-import { Coffee } from "../../../../type/Coffee";
 import { ActionContainer, DetailsContainer, RemoveButtonStyle, SelectCoffeeContent, SelectedCoffeeCardWrapper } from "./styles";
 
 interface SelectedCoffeeCardProps {
@@ -11,8 +10,8 @@ interface SelectedCoffeeCardProps {
 }
 
 export function SelectedCoffeeCard({ coffee }: SelectedCoffeeCardProps) {
-    const { changeCartItemQuantity, cartQuantity,removeCartItem } = useCart();
-    const {description,id,name,photo,price,quantity,tags} = coffee;
+    const { changeCartItemQuantity, removeCartItem } = useCart();
+    const { id, name, photo, price, quantity } = coffee;
 
 
     const handleDecrease = () => {
@@ -23,11 +22,11 @@ export function SelectedCoffeeCard({ coffee }: SelectedCoffeeCardProps) {
         changeCartItemQuantity(id, "increase")
     }
 
-    const handleRemoveCartItem = () =>{
+    const handleRemoveCartItem = () => {
         removeCartItem(id)
     }
     const totalPrice = quantity * price;
-    const formatedPrice = totalPrice.toLocaleString("pt-BR",{minimumFractionDigits:2});
+    const formattedPrice = totalPrice.toLocaleString("pt-BR", { minimumFractionDigits: 2 });
 
     return (
         <SelectedCoffeeCardWrapper>
@@ -53,10 +52,10 @@ export function SelectedCoffeeCard({ coffee }: SelectedCoffeeCardProps) {
                     </ActionContainer>
 
                 </DetailsContainer>
-                
+
             </SelectCoffeeContent>
-            <p><strong>R$ {formatedPrice}</strong></p>
-            
+            <p><strong>R$ {formattedPrice}</strong></p>
+
         </SelectedCoffeeCardWrapper>
     )
 }

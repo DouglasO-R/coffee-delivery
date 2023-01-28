@@ -4,7 +4,7 @@ import { InfoWithIconContainer } from "./styles";
 interface InfoWithIconProps {
     icon: ReactNode;
     variant: "primary" | "secondary" | "tertiary" | "quaternary";
-    text: ReactNode;
+    text: ReactNode | string;
 }
 
 export function InfoWithIcon({ icon, text, variant }: InfoWithIconProps) {

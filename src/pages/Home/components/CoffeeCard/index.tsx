@@ -33,18 +33,20 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
             ...coffee,
             quantity: quantity
         }
-        
+
         addCoffeeToCart(newCoffee);
     }
+
+    const renderTags = (tag: string) => (
+        <TagContent key={`${id}${tag}`}>{tag}</TagContent>
+    )
 
     return (
         <CoffeeCardWrapper>
             <img src={photo} alt="" />
 
             <TagsContainer>
-                {tags?.map((tag) => (
-                    <TagContent key={`${id}${tag}`}>{tag}</TagContent>
-                ))}
+                {tags?.map(renderTags)}
 
             </TagsContainer>
 

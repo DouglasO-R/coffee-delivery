@@ -1,6 +1,6 @@
 import { RegularText } from "../../../../components/RegularText";
 import { TitleText } from "../../../../components/TitleText";
-import { ConfirmButton,  Divider,  MoneyInfoContainer, SelectedCoffeesContainer, SelectedCoffeesWrapper } from "./style";
+import { ConfirmButton, Divider, MoneyInfoContainer, SelectedCoffeeListContainer, SelectedCoffeesContainer, SelectedCoffeesWrapper } from "./style";
 
 import { NavLink } from "react-router-dom";
 import { useCart } from "../../../../hooks/useCart";
@@ -21,13 +21,16 @@ export function SelectedCoffees() {
             <TitleText size="xs" weight={700} color="subtitle">Cafés selecionados</TitleText>
 
             <SelectedCoffeesContainer>
-                {cartItems.map((item) => (
-                    <React.Fragment key={item.id} >
-                         <SelectedCoffeeCard coffee={item} />
-                         <Divider />
-                    </React.Fragment>
-                   
-                ))}
+                <SelectedCoffeeListContainer>
+                    {cartItems.map((item) => (
+                        <React.Fragment key={item.id} >
+                            <SelectedCoffeeCard coffee={item} />
+                            <Divider />
+                        </React.Fragment>
+
+                    ))}
+                </SelectedCoffeeListContainer>
+
 
 
                 <MoneyInfoContainer>
@@ -47,9 +50,8 @@ export function SelectedCoffees() {
 
                 </MoneyInfoContainer>
 
-                <NavLink to="/success">
-                    <ConfirmButton>confirmar pedido</ConfirmButton>
-                </NavLink>
+                <ConfirmButton type="submit" disabled={cartItems.length < 1}>confirmar pedido</ConfirmButton>
+
             </SelectedCoffeesContainer>
 
 
