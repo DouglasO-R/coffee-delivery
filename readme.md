@@ -55,7 +55,7 @@ Apesar de serem poucas funcionalidades, você vai precisar relembrar conceitos c
 - Propriedades
 - Componentização
 
-Para rodar clone o repositório  `git clone git@github.com:DouglasO-R/coffee-delivery.git`, acesse a pasta do web `cd coffee-delivery`, instale as dependências `yarn`, e rode o app com `yarn dev` 
+Para rodar clone o repositório  `git clone git@github.com:DouglasO-R/coffee-delivery.git`, acesse a pasta do web `cd coffee-delivery`, instale as dependências `yarn`, e rode o servidor com`yarn server ` e o app com `yarn dev` 
 
 ## 🔖 Layout
 
